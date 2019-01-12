@@ -6,10 +6,11 @@ from django.conf import settings
 
 class Category(models.Model):
 	catDef = models.CharField(max_length=64,blank = True)
-	word = models.OneToOneField(Word,on_delete=models.CASCADE,primary_key=True)
+	
 
 class Word(models.Model):
 	name = models.CharField(max_length=64,blank = True)
+	cat = models.OneToOneField(Category,on_delete=models.CASCADE,primary_key=False)
 	
 
 	def __str__(self):
