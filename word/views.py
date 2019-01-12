@@ -8,4 +8,5 @@ def index(request):
 		word = request.POST['word_name']
 		definition = request.POST['word_def']
 		Word.objects.create(name=word, definition=definition)
+	all_word = Word.objects.all()
 	return render(request,"index.html",locals())

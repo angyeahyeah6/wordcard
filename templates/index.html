@@ -134,6 +134,10 @@
         <input id = "defnition" type="text" name = "word_def" placeholder="definition"></input>
         <input type="submit" name = "create_word" value="送出"></input>
     </form>
+    {% for i in all_word %}
+        word_name: {{i.name}}<br>
+        word_definition: {{i.definition}}<br>
+    {% endfor %}
     <!-- ##### Hero Area End ##### -->
 
     <!-- ##### Cool Facts Area Start ##### -->
