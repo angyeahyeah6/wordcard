@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load  staticfiles %}
 
 <head>
     <meta charset="UTF-8">
@@ -125,7 +126,8 @@
             </div>
         </div>
     </section>
-    <form action="" method="post" class = "create_food_event">    
+    <form action="" method="post" class = "create_food_event"> 
+    {% csrf_token %}   
         <p>你有多的食物嗎?<br>把美味分享給需要的人</p>
         <br>
         <input id = "name" type="text" name = "word_name" placeholder="word"></input>
