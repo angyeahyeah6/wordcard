@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load  staticfiles %}
+{% load  static %}
 
 <head>
     <meta charset="UTF-8">
@@ -34,8 +34,7 @@
                 <!-- Menu -->
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
-                    <!-- Logo -->
-                    <a class="nav-brand" href="index.html"><img src="..static/img/core-img/logo.png" alt=""></a>
+                
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -53,32 +52,21 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="#">Pages</a>
+                                <li><a href="#">Categories</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="courses.html">Courses</a></li>
-                                        <li><a href="single-course.html">Single Courses</a></li>
-                                        <li><a href="instructors.html">Instructors</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-details.html">Single Blog</a></li>
-                                        <li><a href="regular-page.html">Regular Page</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="/word">Word</a></li>
+                                        <li><a href="/word/phrase">Phrase</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="courses.html">Courses</a></li>
-                                <li><a href="instructors.html">Instructors</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="contact.html">Contact</a></li>
                             </ul>
 
                             <!-- Search Button -->
-                            <div class="search-area">
+                            <!-- <div class="search-area">
                                 <form action="#" method="post">
                                     <input type="search" name="search" id="search" placeholder="Search">
                                     <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
-                            </div>
+                            </div> -->
 
                             <!-- Register / Login -->
                             <div class="register-login-area">
@@ -106,6 +94,8 @@
     <footer>
         <div id="count"></div>
     </footer>
+    
+    
 
     <!-- ##### Hero Area Start ##### -->
     <!-- <section class="hero-area bg-img bg-overlay-2by5" style="background-image: url(img/bg-img/bg1.jpg);">
@@ -121,20 +111,21 @@
             </div>
         </div>
     </section> -->
-    <form action="" method="post" class = "create_food_event"> 
+    <form action="" method="post" class = "create_food_event" style="position: relative; top: 20px; left: 30%;"> 
     {% csrf_token %}   
-        <p>有什麼想新增的單字嗎<br>在這裡輸入吧</p>
-        <br>
+        <p>有什麼想新增的單字嗎在這裡輸入吧</p>
         
         
         <input id = "name" type="text" name = "word_name" placeholder="word" style="height:40px ;margin: 0px 10px 0px; padding:5px 15px; border: #ccc 1px solid;
         cursor:pointer;
         -webkit-border-radius: 5px;
-        border-radius: 5px; "></input>
+        border-radius: 5px; "
+        autocomplete="off"></input>
         <input id = "defnition" type="text" name = "word_def" placeholder="definition" style=" height:40px;padding:5px 15px;  border: #ccc 1px solid;
         cursor:pointer;
         -webkit-border-radius: 5px;
-        border-radius: 5px; "></input>
+        border-radius: 5px; "
+        autocomplete="off"></input>
         <input type="submit" name = "create_word" class="btn clever-btn" value="送出" style="margin: 0px 10px 0px;"></input>
     </form>
     <p id="demo"></p>
