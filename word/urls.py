@@ -7,4 +7,5 @@ app_name='word'
 
 urlpatterns = [
 	path('',views.index,name = 'index'),
+	path('phrase/',views.phrase,name = 'phrase'),
 ]
