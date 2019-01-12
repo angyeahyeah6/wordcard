@@ -1,6 +1,7 @@
 /* [Master Stylesheet v1.0] */
 /* :: 1.0 Import Fonts */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:300,400,500,600,700");
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 /* :: 2.0 Import All CSS */
 @import url(css/bootstrap.min.css);
 @import url(css/owl.carousel.min.css);
@@ -57,6 +58,8 @@ img {
   height: auto;
   max-width: 100%; }
 
+
+  
 /* Spacing */
 .mt-15 {
   margin-top: 15px !important; }
@@ -319,6 +322,7 @@ textarea:focus {
     #scrollUp {
       bottom: 30px;
       right: 30px; } }
+
 
 /* Button */
 .clever-btn {
