@@ -11,3 +11,5 @@
 */__pycache__/
 
 word/__pycache__/models.cpython-37.pyc
+
+db.sqlite
