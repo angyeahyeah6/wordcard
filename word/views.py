@@ -4,5 +4,8 @@ from .models import Word
 
 # Create your views here.
 def index(request):
-	
-    return render(request,"index.html",locals())
+	if "create_word" in request.POST:
+		word = request.POST['word_name']
+		definition = request.POST['word_def']
+		Word.objects.create(name=word, definition=definition)
+	return render(request,"index.html",locals())
