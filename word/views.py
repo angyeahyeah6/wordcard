@@ -12,9 +12,9 @@ def index(request):
 	return render(request,"index.html",locals())
 
 def phrase(request):
-	if "create_word" in request.POST:
-		phrases = request.POST['phrases_name']
-		definition = request.POST['phrases_def']
-		Phrase.objects.create(name=phrase, definition=definition)
+	if "create_phrase" in request.POST:
+		phrases = request.POST['phrase_name']
+		definition = request.POST['phrase_def']
+		Phrase.objects.create(name=phrases, phraseDef=definition)
 	all_phrase = Phrase.objects.all()
 	return render(request,"phrase.html",locals())
