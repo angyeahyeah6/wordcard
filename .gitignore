@@ -1,1 +1,16 @@
 
+*.log
+
+*.pot
+
+*.pyc
+
+*/*/*/__pycache__/
+
+*/*/__pycache__/
+
+*/__pycache__/
+
+word/__pycache__/models.cpython-37.pyc
+
+db.sqlite
