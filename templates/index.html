@@ -94,7 +94,6 @@
         </div>
     </header>
     <!-- ##### Header Area End ##### -->
-
     <main>
         <button id="prev"></button>
         <div id="card">
@@ -138,6 +137,8 @@
         border-radius: 5px; "></input>
         <input type="submit" name = "create_word" class="btn clever-btn" value="送出" style="margin: 0px 10px 0px;"></input>
     </form>
+    <p id="demo"></p>
+    <p id="demo1"></p>
     <!-- <div style="margin: 0px 10px 0px;">
         {% for i in all_word %}
         word_name: {{i.name}}<br>
@@ -149,6 +150,22 @@
 
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
+    <script type="text/javascript">
+        var myDjangoList = (("{{word |safe}}").replace(/&(l|g|quo)t;/g, function(a,b){
+                    return {
+                        l   : '<',
+                        g   : '>',
+                        quo : '"'
+                    }[b];
+                }));
+
+        myDjangoList = myDjangoList.replace(/u'/g, '\'')
+        myDjangoList = myDjangoList.replace(/'/g, '\"')
+
+        myData = JSON.parse( myDjangoList );
+
+        document.getElementById("demo").innerHTML = myData[3]
+    </script>
     <script src="../static/js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
     <script src="../static/js/bootstrap/popper.min.js"></script>

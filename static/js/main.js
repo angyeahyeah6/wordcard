@@ -8,7 +8,20 @@ const count = document.querySelector("#count");
 const endpoint =
   "https://gist.githubusercontent.com/cahdeemer/90a32410656e2aa33d29b694bc28ab08/raw/4c7ae385f4f1c1ec7c42ef0154f927ace3d3f12e/interview_prep.json";
 const questions = [];
+var myDjangoList = (("{{word |safe}}").replace(/&(l|g|quo)t;/g, function(a,b){
+            return {
+                l   : '<',
+                g   : '>',
+                quo : '"'
+            }[b];
+        }));
 
+myDjangoList = myDjangoList.replace(/u'/g, '\'')
+myDjangoList = myDjangoList.replace(/'/g, '\"')
+
+myData = JSON.parse( myDjangoList );
+
+document.getElementById("demo").innerHTML = myData[3]
 let current = 0;
 let turned = false;
 
