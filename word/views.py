@@ -25,5 +25,11 @@ def phrase(request):
 		phrases = request.POST['phrase_name']
 		definition = request.POST['phrase_def']
 		Phrase.objects.create(name=phrases, phraseDef=definition)
+	
 	all_phrase = Phrase.objects.all()
+	phrases = []
+	definition = []
+	for i in all_phrase:
+		phrases.append(i.name)
+		definition.append(i.phraseDef)
 	return render(request,"phrase.html",locals())
