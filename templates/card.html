@@ -112,34 +112,34 @@
                                 <div class="row">
                                     <div class="col-12 col-lg-12">
                                         <div class="form-group">
+
                                             <input name = "card_name" type="text" class="form-control" id="text" placeholder="Card Name">
-    
+                                            
                                             <!-- <button class="btn clever-btn w-100" type= "submit" onclick="" name = "find_card">submit</button> -->
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             <div class="row">
                 <!-- Single Teacher -->
                 <div class="col-12 col-md-6 col-lg-12">
-                    {% for i in all_word%}
-                    <div class="single-instructor d-flex align-items-center mb-30" style="height:50px">
-                           
-                        <div style="text-align:center; margin: 0px 30px 0px">
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
+                        {% csrf_token %}
+                        {% for i in all_word %}
+                        <div class="single-instructor d-flex align-items-center mb-30" style="height:50px">
+                            <div style="text-align:center; margin: 0px 30px 0px">
+                                <input type="checkbox" value = "{{i}}" name = "{{i.id}}">
+                                {{i.id}}
+                                <span class="checkmark"></span>
+                            </div>
+                            <div class="instructor-info">
+                                <h5>{{i.name}} </h5>
+                            </div>
                         </div>
-                        <div class="instructor-info">
-                            <h5>{{i.name}} </h5>
-                            
-                            <!-- <h5>Sarah Parker</h5>
-                            <span>Teacher</span> -->
-                        </div>
-                    </div>
-                    {% endfor%}
+                        {% endfor%}
+                        <button class="btn clever-btn w-100" type= "submit" name = "create_card">submit</button>
+                    </form>
                 </div>
             </div>
         </div>
