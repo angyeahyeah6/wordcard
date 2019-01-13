@@ -142,30 +142,24 @@
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
     <script type="text/javascript">
-        var myDjangoList = (("{{word |safe}}").replace(/&(l|g|quo)t;/g, function(a,b){
-                    return {
-                        l   : '<',
-                        g   : '>',
-                        quo : '"'
-                    }[b];
-                }));
+        function change_type(thing){
+            var myDjangoList = ((thing).replace(/&(l|g|quo)t;/g, function(a,b){
+                        return {
+                            l   : '<',
+                            g   : '>',
+                            quo : '"'
+                        }[b];
+                    }));
 
-        myDjangoList = myDjangoList.replace(/u'/g, '\'')
-        myDjangoList = myDjangoList.replace(/'/g, '\"')
-        myData = JSON.parse( myDjangoList );
-
-        var DjangoList = (("{{definition |safe}}").replace(/&(l|g|quo)t;/g, function(a,b){
-                    return {
-                        l   : '<',
-                        g   : '>',
-                        quo : '"'
-                    }[b];
-                }));
-
-        DjangoList = DjangoList.replace(/u'/g, '\'')
-        DjangoList = DjangoList.replace(/'/g, '\"')
-        mydef = JSON.parse( DjangoList );
-
+            myDjangoList = myDjangoList.replace(/u'/g, '\'')
+            myDjangoList = myDjangoList.replace(/'/g, '\"')
+            myData = JSON.parse( myDjangoList );
+            return myData
+        }
+        var word = "{{word |safe}}";
+        var definition = "{{definition |safe}}"
+        var myData = change_type(word)
+        var mydef = change_type(definition)
         const card = document.querySelector("#card");
         const front = document.querySelector(".front");
         const back = document.querySelector(".back");
@@ -215,8 +209,8 @@
         function getPrevCard() {
           if (current > 1) {
             resetCard();
-            front.innerHTML = `<p>${questions[current - 2].question}</p>`;
-            back.innerHTML = `<p>${questions[current - 2].answer}</p>`;
+            front.innerHTML = `<p>${questions[current-2]}</p>`;
+            back.innerHTML = `<p>${answer[current]}</p>`;
             count.innerHTML = `<p>${[current - 1]} / ${questions.length}</p>`;
             current--;
           } else {

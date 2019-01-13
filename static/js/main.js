@@ -5,7 +5,8 @@ const back = document.querySelector(".back");
 const next = document.querySelector("#next");
 const prev = document.querySelector("#prev");
 const count = document.querySelector("#count");
-const endpoint = "{{ response }}";
+const endpoint =
+  "https://gist.githubusercontent.com/cahdeemer/90a32410656e2aa33d29b694bc28ab08/raw/4c7ae385f4f1c1ec7c42ef0154f927ace3d3f12e/interview_prep.json";
 const questions = [];
 let current = 0;
 let turned = false;
@@ -27,7 +28,7 @@ function resetCard() {
 
 function populateNextCard() {
   resetCard();
-  front.innerHTML = `<p>${questions[current].word}</p>`;
+  front.innerHTML = `<p>${questions[current].question}</p>`;
   back.innerHTML = `<p>${questions[current].answer}</p>`;
   count.innerHTML = `<p>${[current + 1]} / ${questions.length}</p>`;
   current++;
