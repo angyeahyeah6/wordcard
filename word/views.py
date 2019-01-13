@@ -85,6 +85,7 @@ def test(request):
 	for i in all_word:
 			all_word_answer.append(i.word.definition)
 	return render(request,"test.html",locals())
+@login_required(login_url='/account/register/')
 def card(request):
 	all_word = Word.objects.all()
 	check_word = []
