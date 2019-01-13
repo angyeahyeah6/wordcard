@@ -70,8 +70,8 @@
 
                             <!-- Register / Login -->
                             <div class="register-login-area">
-                                <a href="#" class="btn">Register</a>
-                                <a href="index-login.html" class="btn active">Login</a>
+                                <a class="btn active">Hi {{ user.username }}!</a>
+                                <button onclick="location.href='/account/logout'" class="btn clever-btn">Logout</button>
                             </div>
 
                         </div>
@@ -86,9 +86,9 @@
     <main style="text-align:center;">
         <button id="prev"></button>
         <div id="card">
-            <div class="side front">
+            <div class="side front" style="font-size: 40px;">
             </div>
-            <div class="side back"></div>
+            <div class="side back" style="font-size: 40px;"></div>
         </div>
         <button id="next"></button>
     </main>
@@ -118,11 +118,13 @@
         <input id = "name" type="text" name = "phrase_name" placeholder="phrase" style="height:40px ;margin: 0px 10px 0px; padding:5px 15px; border: #ccc 1px solid;
         cursor:pointer;
         -webkit-border-radius: 5px;
-        border-radius: 5px; "></input>
+        border-radius: 5px; "
+        autocomplete="off"></input>
         <input id = "defnition" type="text" name = "phrase_def" placeholder="definition" style=" height:40px;padding:5px 15px;  border: #ccc 1px solid;
         cursor:pointer;
         -webkit-border-radius: 5px;
-        border-radius: 5px; "></input>
+        border-radius: 5px; "
+        autocomplete="off"></input>
         <input type="submit" name = "create_phrase" class="btn clever-btn" value="送出" style="margin: 0px 10px 0px;"></input>
     </form>
     <!-- <div style="margin: 0px 10px 0px;">

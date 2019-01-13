@@ -47,18 +47,7 @@
                                 </div>
                                 <button type="submit" class="btn clever-btn">Sign up</button>
                             </form>
-                            {% if user.is_authenticated %}
-                                <center>
-                                    <p style="font-size:13pt">Hi {{ user.username }}!
-                                    <button onclick="location.href='/account/logout'" class="btn clever-btn">Logout</button>
-                                    </p>
-                                </center>
-                            {% else %}
-                                <center>
-                                <p style="font-size:13pt">You are not logged in.
-                                    <button onclick="location.href='/account/login'" class="btn clever-btn">Login</button></p>
-                                </center>
-                            {% endif %}
+                            <button onclick="location.href='/account/login'" class="btn clever-btn" style="margin: 10px 0px 0px">Login</button></p>
                         </div>
                     </div>
                 </div>

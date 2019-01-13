@@ -70,8 +70,8 @@
 
                             <!-- Register / Login -->
                             <div class="register-login-area">
-                                <a href="#" class="btn">Register</a>
-                                <a href="index-login.html" class="btn active">Login</a>
+                                <a class="btn active">Hi {{ user.username }}!</a>
+                                <button onclick="location.href='/account/logout'" class="btn clever-btn">Logout</button>
                             </div>
 
                         </div>
@@ -85,9 +85,9 @@
     <main>
         <button id="prev"></button>
         <div id="card">
-            <div class="side front">
+            <div class="side front" style="font-size: 40px;">
             </div>
-            <div class="side back"></div>
+            <div class="side back" style="font-size: 40px;"></div>
         </div>
         <button id="next"></button>
     </main>
