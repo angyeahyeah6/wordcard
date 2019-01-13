@@ -87,7 +87,24 @@ def test(request):
 	return render(request,"test.html",locals())
 def card(request):
 	all_word = Word.objects.all()
-
+	check_word = []
+	author = request.user
+	card_name = ""
+	if "create_card" in request.POST:
+		s = request.POST
+		card_name = s['card_name']
+		print(card_name)
+		for i in all_word:
+			try:
+				myid = str(i.id)
+				check_word.append(Word.objects.get(name=s[myid]))
+			except:
+				pass
+		for i in check_word:
+			try:
+				Card.objects.get(name=card_name,word__name=i)
+			except:
+				Card.objects.create(name=card_name,word=i,author=author)
 	return render(request,"card.html",locals())
 
 
