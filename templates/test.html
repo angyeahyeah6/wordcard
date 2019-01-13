@@ -72,10 +72,9 @@
 
                             <!-- Register / Login -->
                             <div class="register-login-area">
-                                <a href="#" class="btn">Register</a>
-                                <a href="index-login.html" class="btn active">Login</a>
+                                <a class="btn active">Hi {{ user.username }}!</a>
+                                <button onclick="location.href='/account/logout'" class="btn clever-btn">Logout</button>
                             </div>
-
                         </div>
                         <!-- Nav End -->
                     </div>
@@ -84,7 +83,7 @@
         </div>
     </header>
     <!-- ##### Header Area End ##### -->
-<div class="clever-catagory blog-details bg-img d-flex align-items-center justify-content-center p-3 height-400" style="background-image: url(img/blog-img/7.jpg);">
+    <!-- <div class="clever-catagory blog-details bg-img d-flex align-items-center justify-content-center p-3 height-400" style="background-image: url(img/blog-img/7.jpg);">
         <div class="blog-details-headline">
             <h3>English Grammar</h3>
             <div class="meta d-flex align-items-center justify-content-center">
@@ -93,7 +92,7 @@
                 <a href="#">Art &amp; Design</a>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- ##### Catagory Area End ##### -->
 
     <!-- ##### Blog Details Content ##### -->
@@ -117,7 +116,7 @@
                                 </div>
                                 <br>
                                 {% if message != "" %}
-                                <h3><br>{{ message }}</h3>
+                                <h3><br></h3>
                                 {% else %}
                                 <h3>{{ message }}</h3>
                                 {% endif %}
@@ -128,11 +127,6 @@
             </div>
 
 
-                <div class="col-12">
-                    <div class="load-more text-center mt-50">
-                        <a href="#" class="btn clever-btn btn-2">Load More</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -144,7 +138,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-heading">
-                            <h3>START YPUR TESTING</h3>
+                            <h3>START YOUR TESTING</h3>
                         </div>
                     </div>
                 </div>
@@ -183,21 +177,7 @@
     {% endif %}
     <!-- ##### Top Teacher Area End ##### -->
         <!-- Bottom Footer Area -->
-        <div class="bottom-footer-area d-flex justify-content-between align-items-center">
-            <!-- Contact Info -->
-            <div class="contact-info">
-                <a href="#"><span>Phone:</span> +44 300 303 0266</a>
-                <a href="#"><span>Email:</span> info@clever.com</a>
-            </div>
-            <!-- Follow Us -->
-            <div class="follow-us">
-                <span>Follow us</span>
-                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            </div>
-        </div>
-    </footer>
+        
     <p id="start"></p>
     <script>
         var all_word_answer = "{{ all_word_answer |safe}}";
