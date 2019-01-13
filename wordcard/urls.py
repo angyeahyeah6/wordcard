@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from word import views as w_views
+from account import views as a_views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',a_views.register,name="start"),
     path('word/', include('word.urls')),
     path('account/',include('account.urls'))
     

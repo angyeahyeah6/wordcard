@@ -147,13 +147,13 @@
 
             myDjangoList = myDjangoList.replace(/u'/g, '\'')
             myDjangoList = myDjangoList.replace(/'/g, '\"')
-            myData = JSON.parse( myDjangoList );
-            return myData
+            data = JSON.parse( myDjangoList );
+            return data
         }
         var phrases = "{{phrases |safe}}";
-        var definition = "{{definition |safe}}"
+        var phrase_def = "{{definition_p |safe}}"
         var myData = change_type(phrases)
-        var mydef = change_type(definition)
+        var mydef = change_type(phrase_def)
         const card = document.querySelector("#card");
         const front = document.querySelector(".front");
         const back = document.querySelector(".back");
