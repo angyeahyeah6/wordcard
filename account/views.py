@@ -1,37 +1,38 @@
 from django.shortcuts import render, redirect
-from .models import User
 # Create your views here.
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 
 def login(request):
-	login = 0
 	if request.method == 'POST':
-		enter_name = request.POST['name']
-		enter_password = request.POST['password']
-		user = User.objects.get(name=enter_name)
-		if user is None:
-			message = "使用者不存在"
+		form = AuthenticationForm(data=request.POST)
+		if form.is_valid():
+			# log in the user
+			user = form.get_user()
+			login(request,user)
+			return redirect('../../word/')
 		else:
-			true_password = user.password
-			if enter_password == true_password:
-				user.login = 1
-				login = user.login
-				return redirect("../../word")
-	return render(request,'login.html',locals())
+			return redirect("../../word/")
+	else:
+		form = AuthenticationForm()
+	return render(request,'login.html',{'form':form})
 
 def register(request):
 	if request.method == 'POST':
-		name = request.POST['name']
-		password = request.POST['password']
-		email = request.POST['email']
-		try:
-			user = User.objects.get(name=name)
-		except:
-			user = None
-		if user is not None:
-			message = '此使用者已經有人使用'
-		else:
-			User.objects.create(name=name, email=email, password=password)
-			message = "註冊成功"
-			return render(request, "login.html", locals())
-	return render(request, 'register.html', locals())
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			# log the user in
+			login(request,user)
+			# return redirect('articles:list')
+			return redirect('../../word/')
+	else:
+		form = UserCreationForm()
+	return render(request,'register.html',{'form':form})
 
+def logout_view(request):
+	logout(request)
+	return redirect('../../word/')
