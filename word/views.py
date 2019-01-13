@@ -87,6 +87,8 @@ def test(request):
 			correct = 2
 	return render(request,"test.html",locals())
 def card(request):
+	all_word = Word.objects.all()
+
 	return render(request,"card.html",locals())
 
 
