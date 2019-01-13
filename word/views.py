@@ -30,17 +30,17 @@ def phrase(request):
 		phrase = Phrase.objects.create(name=phrases, phraseDef=definition)
 		word_relate = phrases.split(" ")
 		for i in word_relate:
-			if len(i) > 5:
+			if len(i) >= 4:
 				try:
 					word = Word.objects.get(name=i)
 				except:
-					word = Word.objects.create(name=i,definition="")
+					word = Word.objects.create(name=i)
 				Relate.objects.create(word=word,phrase=phrase)
 	all_phrase = Phrase.objects.all()
 	phrases = []
-	definition = []
+	definition_p = []
 	for i in all_phrase:
 		phrases.append(i.name)
-		definition.append(i.phraseDef)
+		definition_p.append(i.phraseDef)
 
 	return render(request,"phrase.html",locals())

@@ -153,8 +153,8 @@
 
             myDjangoList = myDjangoList.replace(/u'/g, '\'')
             myDjangoList = myDjangoList.replace(/'/g, '\"')
-            myData = JSON.parse( myDjangoList );
-            return myData
+            data = JSON.parse( myDjangoList );
+            return data
         }
         var word = "{{word |safe}}";
         var definition = "{{definition |safe}}"
