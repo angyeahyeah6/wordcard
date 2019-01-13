@@ -86,6 +86,8 @@ def test(request):
 			all_word_answer.append(i.word.definition)
 	return render(request,"test.html",locals())
 def card(request):
+	all_word = Word.objects.all()
+
 	return render(request,"card.html",locals())
 
 
