@@ -57,20 +57,37 @@ def phrase(request):
 		definition_p.append(i.phraseDef)
 
 	return render(request,"phrase.html",locals())
-def card(request):
+def test(request):
 	message = ""
 	all_word = []
+	all_word_answer = []
+	print(request.POST)
 	# all_card = Card.objects.all()
 	if "find_card" in request.POST:
 		card_name = request.POST["card_name"]
-		print(card_name)
 		try: 
-			all_word = Card.objects.filter(name=card_name).word
+			all_word = Card.objects.filter(name=card_name)
 			message = "find it"
 		except:
 			message = "Can't find the card, dude."
+	if "with_answer" in request.POST:
+		wordid = request.POST['with_answer']
+		enter_answer = request.POST["enter_answer"]
+		card_name = Card.objects.get(word__id=wordid).name
+		all_word = Card.objects.filter(name=card_name)
+		for i in all_word:
+			all_word_answer.append(i.word.definition)
+		chin_answer = Word.objects.get(id=wordid).definition
+		message = "find it"
+		print(enter_answer,"     ",chin_answer)
+		wordid = int(wordid)
+		if enter_answer == chin_answer:
+			correct = 1
+		else:
+			correct = 2
+	return render(request,"test.html",locals())
+def card(request):
 	return render(request,"card.html",locals())
-
 
 
 

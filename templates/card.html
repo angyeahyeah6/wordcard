@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load  static %}
 
 <head>
     <meta charset="UTF-8">
@@ -10,14 +9,14 @@
     <!-- The above 4 meta tags *Must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Clever - Education &amp; Courses Template | Home</title>
+    <title>Clever - Education &amp; Courses Template | Instructors</title>
 
     <!-- Favicon -->
     <link rel="icon" href="../../static/img/core-img/favicon.ico">
 
     <!-- Stylesheet -->
-    <!-- <link rel="stylesheet" href="../static/style.css"> -->
-    <link rel="stylesheet" href="../../static/styleflash.css">
+    <link rel="stylesheet" href="../../static/style.css">
+
 </head>
 
 <body>
@@ -28,13 +27,31 @@
 
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
+
+        <!-- Top Header Area -->
+        <div class="top-header-area d-flex justify-content-between align-items-center">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <a href="#"><span>Phone:</span> +44 300 303 0266</a>
+                <a href="#"><span>Email:</span> info@clever.com</a>
+            </div>
+            <!-- Follow Us -->
+            <div class="follow-us">
+                <span>Follow us</span>
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
         <!-- Navbar Area -->
         <div class="clever-main-menu">
             <div class="classy-nav-container breakpoint-off">
                 <!-- Menu -->
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
-                
+                    <!-- Logo -->
+                    <a class="nav-brand" href="index.html"><img src="img/core-img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -52,21 +69,32 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="#">Categories</a>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="#">Pages</a>
                                     <ul class="dropdown">
-                                        <li><a href="/word">Word</a></li>
-                                        <li><a href="/word/phrase">Phrase</a></li>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="courses.html">Courses</a></li>
+                                        <li><a href="single-course.html">Single Courses</a></li>
+                                        <li><a href="instructors.html">Instructors</a></li>
+                                        <li><a href="blog.html">Blog</a></li>
+                                        <li><a href="blog-details.html">Single Blog</a></li>
+                                        <li><a href="regular-page.html">Regular Page</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="courses.html">Courses</a></li>
+                                <li><a href="instructors.html">Instructors</a></li>
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="contact.html">Contact</a></li>
                             </ul>
 
                             <!-- Search Button -->
-                            <!-- <div class="search-area">
+                            <div class="search-area">
                                 <form action="#" method="post">
                                     <input type="search" name="search" id="search" placeholder="Search">
                                     <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
-                            </div> -->
+                            </div>
 
                             <!-- Register / Login -->
                             <div class="register-login-area">
@@ -82,57 +110,49 @@
         </div>
     </header>
     <!-- ##### Header Area End ##### -->
-<div class="clever-catagory blog-details bg-img d-flex align-items-center justify-content-center p-3 height-400" style="background-image: url(img/blog-img/7.jpg);">
-        <div class="blog-details-headline">
-            <h3>English Grammar</h3>
-            <div class="meta d-flex align-items-center justify-content-center">
-                <a href="#">Sarah Parker</a>
-                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
-                <a href="#">Art &amp; Design</a>
-            </div>
-        </div>
-    </div>
-    <!-- ##### Catagory Area End ##### -->
 
-    <!-- ##### Blog Details Content ##### -->
-    <div class="blog-details-content section-padding-100">
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area">
+        <!-- Breadcumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Courses</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Art &amp; Design</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+                    
+
+    <!-- ##### Top Teacher Area Start ##### -->
+    <section class="top-teacher-area section-padding-0-100">
         <div class="container">
-            <div class="row justify-content-center">
-                <!-- Post A Comment -->
-                <div class="col-12 col-lg-6">
-                    <div class="post-a-comments mb-70">
-                        <h4>Let's choose card name now </h4>
-
-                        <form action="#" method="post">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-12 col-lg-12">
-                                    <div class="form-group">
-                                        <input name = "card_name" type="text" class="form-control" id="text" placeholder="Card Name">
-
-                                        <button class="btn clever-btn w-100" type= "submit" name = "find_card">submit</button>
-                                    </div>
-                                </div>
-                                <br>
-                                {% if message != "" %}
-                                <h3><br>{{ message }}</h3>
-                                {% else %}
-                                <h3>{{ message }}</h3>
-                                {% endif %}
-                            </div>
-                        </form>
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h3>Top Teachers in Every Field</h3>
                     </div>
                 </div>
             </div>
-
-                <div class="col-12">
-                    <div class="load-more text-center mt-50">
-                        <a href="#" class="btn clever-btn btn-2">Load More</a>
+            <div class="row">
+                <!-- Single Teacher -->
+                <div class="col-12 col-md-6 col-lg-12">
+                    <div class="single-instructor d-flex align-items-center mb-30">
+                        <div class="instructor-thumb">
+                            <img src="img/bg-img/t1.png" alt="">
+                        </div>
+                        <div class="instructor-info">
+                            <h5>Sarah Parker</h5>
+                            <span>Teacher</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <!-- ##### Top Teacher Area End ##### -->
+
         <!-- Bottom Footer Area -->
         <div class="bottom-footer-area d-flex justify-content-between align-items-center">
             <!-- Contact Info -->
