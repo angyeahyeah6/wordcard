@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate
 from .models import Word, Phrase
 import simplejson
 import json
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -13,11 +14,10 @@ def index(request):
 		Word.objects.create(name=word, definition=definition)
 	all_word = Word.objects.all()
 	word = []
-	defi = []
+	definition = []
 	for i in all_word:
 		word.append(i.name)
-		defi.append(i.definition)
-
+		definition.append(i.definition)
 	return render(request,"index.html",locals())
 
 def phrase(request):
