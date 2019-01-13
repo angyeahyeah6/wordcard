@@ -61,7 +61,6 @@ def test(request):
 	message = ""
 	all_word = []
 	all_word_answer = []
-	print(request.POST)
 	# all_card = Card.objects.all()
 	if "find_card" in request.POST:
 		card_name = request.POST["card_name"]
@@ -75,8 +74,6 @@ def test(request):
 		enter_answer = request.POST["enter_answer"]
 		card_name = Card.objects.get(word__id=wordid).name
 		all_word = Card.objects.filter(name=card_name)
-		for i in all_word:
-			all_word_answer.append(i.word.definition)
 		chin_answer = Word.objects.get(id=wordid).definition
 		message = "find it"
 		print(enter_answer,"     ",chin_answer)
@@ -85,6 +82,8 @@ def test(request):
 			correct = 1
 		else:
 			correct = 2
+	for i in all_word:
+			all_word_answer.append(i.word.definition)
 	return render(request,"test.html",locals())
 def card(request):
 	return render(request,"card.html",locals())

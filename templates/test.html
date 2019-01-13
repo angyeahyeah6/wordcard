@@ -158,8 +158,8 @@
                                 <h5>{{i.word.name}}</h5>
                                 <!-- <form action="#" method="post"> -->
                                     <!-- {% csrf_token %} -->
-                                    <input type="text" id={{i.word.id}}>
-                                    <button onclick="checkAnswer(document.getElementById({{i.word.id}} ).value,{{i.word.id}})"> check </button>
+                                    <input type="text" id="{{i.word.id}}">
+                                    <button onclick="checkAnswer(document.getElementById('{{i.word.id}}').value,'{{i.word.id}}')"> check </button>
                                     <!-- <input type="text" name = "enter_answer" placeholder="answer">
                                      <button class="btn clever-btn w-100" type= "submit" name="with_answer" value = {{i.word.id}}>submit</button>
                                      <input onclick="" ></button>
@@ -171,6 +171,8 @@
                                 {% endif %} -->
                             </div>
                             {% endfor %}
+                            <p id ="checking"></p>
+                            
                         </div>
                     </div>
                 </div>
@@ -194,9 +196,28 @@
             </div>
         </div>
     </footer>
+    <p id="start"></p>
     <script>
         var all_word_answer = "{{ all_word_answer |safe}}";
-        var answers = change_type(all_word_answer,0);
+        var answer = []
+        var state = 0
+        var temp = ""
+        for(i=0;i<all_word_answer.length;i++){
+            
+            if(state == 0 && all_word_answer[i] == "'" ){
+                state = 1;
+                i++;
+            }
+            if(state == 1 && all_word_answer[i] != "'"){
+                temp += all_word_answer[i]
+            }
+
+            if(state == 1 && all_word_answer[i] == "'"){
+                answer.push(temp);
+                state = 0;
+                temp = "";
+            }
+        }
         function change_type(thing,setting){
             var myDjangoList = ((thing).replace(/&(l|g|quo)t;/g, function(a,b){
                         return {
@@ -217,7 +238,15 @@
             }
             
         }
-        function checkAnswer(enter_ans,answer_id){
+        function checkAnswer(enter_ans,ans_id){
+            var id = Number(ans_id)
+            id = id - 19
+            if (answer[id] == enter_ans){
+                document.getElementById("checking").innerHTML = "you are right!";
+            }
+            else{
+                document.getElementById("checking").innerHTML = "you are wrong!";
+            }
             
         }
     </script>
