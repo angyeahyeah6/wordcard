@@ -84,17 +84,9 @@
     <!-- ##### Header Area End ##### -->
     <main>
         <button id="prev"></button>
-<<<<<<< HEAD
         <div id="card">
-            <div class="side front" style="font-size: 40px;">
-            </div>
+            <div class="side front" style="font-size: 40px;"></div>
             <div class="side back" style="font-size: 40px;"></div>
-=======
-        <div id="card" style="border: 2px pink solid">
-            <div class="side front" style="border: 2px pink solid">
-            </div>
-            <div class="side back" style="border: 2px pink solid"></div>
->>>>>>> bd6ee7144d6a4d2a546af5a561b8232dab219c3e
         </div>
         <button id="next" ></button>
     </main>
@@ -219,7 +211,7 @@
         function populateNextCard() {
           resetCard();
           front.innerHTML = `<p>${questions[current]}</p>`;
-          front.innerHTML += `<p>relate phrase:${temp[current]}</p>`;
+          front.innerHTML += `<br><p style="font-size: 15px; color: white">relate phrase:<br>${temp[current]}</p>`;
           back.innerHTML = `<p>${answer[current]}</p>`;
           count.innerHTML = `<p>${[current + 1]} / ${questions.length}</p>`;
           current++;
@@ -237,7 +229,7 @@
           if (current > 1) {
             resetCard();
             front.innerHTML = `<p>${questions[current-2]}</p>`;
-            front.innerHTML += `<p>${temp[current-2]}</p>`;
+            front.innerHTML += `<br><p style="font-size: 15px; color: white;">relate phrase:<br>${temp[current]}</p>`;
             back.innerHTML = `<p>${answer[current-2]}</p>`;
             count.innerHTML = `<p>${[current - 1]} / ${questions.length}</p>`;
             current--;
