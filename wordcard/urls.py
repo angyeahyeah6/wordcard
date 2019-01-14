@@ -22,7 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',a_views.register,name="start"),
     path('word/', include('word.urls')),
-    path('account/',include('account.urls'))
+    path('account/',include('account.urls')),
+    path('exam/',include('exam.urls'))
     
 
 ]
