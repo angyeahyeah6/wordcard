@@ -88,12 +88,19 @@
         <button id="prev"></button>
         <div id="card">
             <div class="side front" style="font-size: 40px;"></div>
-            <div class="side back" style="font-size: 40px;"></div>
+            <div class="side back" style="font-size: 40px;">
+            </div>
         </div>
         <button id="next" ></button>
     </main>
     <footer>
         <div id="count"></div>
+        <form action="#" method="post" >
+            {% csrf_token %}
+            <input id = "Chinese" type="text" name = "chinese" placeholder="">
+            <input id = "English" type="hidden" name = "english" placeholder="">
+            <button name = "change_meaning" onclick = "addmeaning()" class="btn clever-btn" type="submit">修改中文意思</button>
+        </form>
     </footer>
 
     
@@ -203,7 +210,9 @@
             temp[i] = temp[i].replace("]","")
             temp[i] = temp[i].replace("]","")
           }
-        
+        function addmeaning(){
+            document.getElementById("English").value = questions[current-1];
+        }
         function resetCard() {
           prev.disabled = false;
           next.disabled = false;

@@ -10,6 +10,11 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/account/register/')
 def index(request):
 	relate = []
+	if "change_meaning" in request.POST:
+		chinese = request.POST['chinese']
+		english = request.POST['english']
+		change_word = Word.objects.get(name=english)
+		Word.objects.filter(id=change_word.id).update(definition=chinese)
 	if "create_word" in request.POST:
 		word = request.POST['word_name']
 		definition = request.POST['word_def']

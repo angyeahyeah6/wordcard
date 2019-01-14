@@ -151,12 +151,12 @@
                             </div>
                             {% for i in all_word %}
                             <div class="instructor-info">
-                                <h5>{{i.word.name}}</h5>
-                                <p>correct percentage : {{i.corpercent}}</p>
+                                <center><h5>{{i.word.name}}</h5></center>
+                                <p>  正確比率: {{i.corpercent}}</p>
                                 <!-- <form action="#" method="post"> -->
                                     <!-- {% csrf_token %} -->
-                                    <input type="text" id="{{i.word.id}}">
-                                    <button onclick="checkAnswer(document.getElementById('{{i.word.id}}').value,'{{i.word.id}}')"> check </button>
+                                    <input type="text" id="{{i.word.id}}" style=" margin-bottom:10px;">
+                                    <button class="btn clever-btn w-40" onclick="checkAnswer(document.getElementById('{{i.word.id}}').value,'{{i.word.id}}')"> check </button>
                                     <!-- <input type="text" name = "enter_answer" placeholder="answer">
                                      <button class="btn clever-btn w-100" type= "submit" name="with_answer" value = {{i.word.id}}>submit</button>
                                      <input onclick="" ></button>
@@ -168,7 +168,6 @@
                                 {% endif %} -->
                             </div>
                             {% endfor %}
-                            <p id="checking"></p>
                             <br><br><br>
                             <form action="#" method="post">
                                 {% csrf_token %}
@@ -177,6 +176,7 @@
                                 <input id = "card_n" type="hidden" name = "card_n"></input>
                                 <button onclick = "counting()" class="btn clever-btn w-100" type= "submit" name = "update_times">result submit</button>
                             </form>
+                            <p id="checking"></p>
                         </div>
                     </div>
                 </div>
@@ -237,15 +237,21 @@
         function checkAnswer(enter_ans,ans_id){
             var id = Number(ans_id)
             id = id - 19
-            if (answer[id] == enter_ans){
-                document.getElementById("checking").innerHTML = "you are right!";
-                test_time[id] += 1;
+            if(enter_ans != ""){
+                if (answer[id] == enter_ans){
+                    document.getElementById("checking").innerHTML = "you are right!";
+                    test_time[id] += 1;
+                }
+                else{
+                    document.getElementById("checking").innerHTML = "you are wrong!";
+                    wrong_time[id] += 1;
+                    test_time[id] += 1;
+                }
             }
             else{
-                document.getElementById("checking").innerHTML = "you are wrong!";
-                wrong_time[id] += 1;
-                test_time[id] += 1;
+                document.getElementById("checking").innerHTML = "please enter!";
             }
+            
             
             
         }
