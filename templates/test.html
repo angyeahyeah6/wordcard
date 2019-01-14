@@ -10,7 +10,7 @@
     <!-- The above 4 meta tags *Must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Clever - Education &amp; Courses Template | Home</title>
+   <title>Word-card</title>
 
     <!-- Favicon -->
     <link rel="icon" href="../../static/img/core-img/favicon.ico">
@@ -109,7 +109,7 @@
                             <div class="row">
                                 <div class="col-12 col-lg-12">
                                     <div class="form-group">
-                                        <input name = "card_name" type="text" class="form-control" id="text" placeholder="Card Name" autocomplete="off">
+                                        <input id = "card_name" name = "card_name" type="text" class="form-control" id="text" placeholder="Card Name" autocomplete="off">
 
                                         <button class="btn clever-btn w-100" type= "submit" onclick="" name = "find_card">submit</button>
                                     </div>
@@ -152,6 +152,7 @@
                             {% for i in all_word %}
                             <div class="instructor-info">
                                 <h5>{{i.word.name}}</h5>
+                                <p>correct percentage : {{i.corpercent}}</p>
                                 <!-- <form action="#" method="post"> -->
                                     <!-- {% csrf_token %} -->
                                     <input type="text" id="{{i.word.id}}">
@@ -167,8 +168,15 @@
                                 {% endif %} -->
                             </div>
                             {% endfor %}
-                            <p id ="checking"></p>
-                            
+                            <p id="checking"></p>
+                            <br><br><br>
+                            <form action="#" method="post">
+                                {% csrf_token %}
+                                <input id = "test_time" type="hidden" name = "test_time"></input>
+                                <input id = "wrong_time" type="hidden" name = "wrong_time"></input>
+                                <input id = "card_n" type="hidden" name = "card_n"></input>
+                                <button onclick = "counting()" class="btn clever-btn w-100" type= "submit" name = "update_times">result submit</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -184,8 +192,14 @@
         var answer = []
         var state = 0
         var temp = ""
+        var wrong_time = []
+        var test_time = []
+        var card_n = "{{card_name}}"
         for(i=0;i<all_word_answer.length;i++){
-            
+            wrong_time[i] = 0;
+            test_time[i] = 0;
+        }
+        for(i=0;i<all_word_answer.length;i++){
             if(state == 0 && all_word_answer[i] == "'" ){
                 state = 1;
                 i++;
@@ -225,12 +239,23 @@
             id = id - 19
             if (answer[id] == enter_ans){
                 document.getElementById("checking").innerHTML = "you are right!";
+                test_time[id] += 1;
             }
             else{
                 document.getElementById("checking").innerHTML = "you are wrong!";
+                wrong_time[id] += 1;
+                test_time[id] += 1;
             }
             
+            
         }
+        function counting(){
+            document.getElementById("test_time").value = test_time;
+            document.getElementById("wrong_time").value = wrong_time;
+            document.getElementById("card_n").value = card_n;
+        }
+        
+
     </script>
     <!-- ##### Footer Area End ##### -->
     <!-- ##### All Javascript Script ##### -->

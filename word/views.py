@@ -61,6 +61,7 @@ def test(request):
 	message = ""
 	all_word = []
 	all_word_answer = []
+	card_name = ""
 	# all_card = Card.objects.all()
 	if "find_card" in request.POST:
 		card_name = request.POST["card_name"]
@@ -69,21 +70,25 @@ def test(request):
 			message = "find it"
 		except:
 			message = "Can't find the card, dude."
-	if "with_answer" in request.POST:
-		wordid = request.POST['with_answer']
-		enter_answer = request.POST["enter_answer"]
-		card_name = Card.objects.get(word__id=wordid).name
-		all_word = Card.objects.filter(name=card_name)
-		chin_answer = Word.objects.get(id=wordid).definition
-		message = "find it"
-		print(enter_answer,"     ",chin_answer)
-		wordid = int(wordid)
-		if enter_answer == chin_answer:
-			correct = 1
-		else:
-			correct = 2
 	for i in all_word:
 			all_word_answer.append(i.word.definition)
+			card_name = request.POST['card_name']
+	if "update_times" in request.POST:
+		wrong = request.POST['wrong_time'].split(",")
+		test = request.POST['test_time'].split(",")
+		card_n = request.POST['card_n']
+		all_word = Card.objects.filter(name=card_n)
+		print("wrongtime",wrong)
+		state = 0
+		for i in range(len(wrong)):
+			wrong[i] = int(wrong[i])
+			test[i] = int(test[i])
+		for i in range(len(all_word)):
+			print("hihihihi")
+			if wrong[i] > 0: 
+				Card.objects.filter(id=all_word[i].id).update(corpercent = (1-wrong[i]/test[i]))
+			if test[i] > 0:
+				Card.objects.filter(id=all_word[i].id).update(testtime=test[i])
 	return render(request,"test.html",locals())
 @login_required(login_url='/account/register/')
 def card(request):
@@ -91,6 +96,16 @@ def card(request):
 	check_word = []
 	author = request.user
 	card_name = ""
+	get_card_name = Card.objects.filter(author=author).values_list('name', flat=True).distinct()
+	card_corper = []
+	for i in get_card_name:
+		temp_word = Card.objects.filter(name=i)
+		temp_score = 0
+		for j in temp_word:
+			temp_score += j.corpercent
+		temp_score = round(temp_score/len(temp_word),2)
+		card_corper.append(temp_score)
+	all_thing = zip(get_card_name,card_corper)
 	if "create_card" in request.POST:
 		s = request.POST
 		card_name = s['card_name']
@@ -106,6 +121,7 @@ def card(request):
 				Card.objects.get(name=card_name,word__name=i)
 			except:
 				Card.objects.create(name=card_name,word=i,author=author)
+
 	return render(request,"card.html",locals())
 
 
